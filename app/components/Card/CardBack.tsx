@@ -32,13 +32,6 @@ export default function CardBack({ scientist }: CardBackProps) {
 
         <div>
           <p className="text-body-md text-on-surface-variant font-grotesk font-bold uppercase mb-1">
-            Biography
-          </p>
-          <p className="text-body-md text-on-surface font-sans">{scientist.biography}</p>
-        </div>
-
-        <div>
-          <p className="text-body-md text-on-surface-variant font-grotesk font-bold uppercase mb-1">
             First Publication
           </p>
           <p className="text-body-md text-on-surface font-sans">{scientist.firstPublication}</p>
