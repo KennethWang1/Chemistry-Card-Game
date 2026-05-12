@@ -1,23 +1,28 @@
 'use client';
 
 import React from 'react';
-import { Scientist } from '@/app/types/scientist';
+import { Scientist, CollectedCard } from '@/app/types/scientist';
 import ScientistCard from '@/app/components/Card/ScientistCard';
 
 interface CardRevealProps {
   scientist: Scientist | null;
+  collectedCards: CollectedCard[];
   onCollect: () => void;
   onDiscard: () => void;
 }
 
-export default function CardReveal({ scientist, onCollect, onDiscard }: CardRevealProps) {
+export default function CardReveal({ scientist, collectedCards, onCollect, onDiscard }: CardRevealProps) {
   if (!scientist) return null;
+
+  const isAlreadyCollected = collectedCards.some((card) => card.scientistId === scientist.id);
 
   return (
     <div className="w-full flex flex-col items-center gap-4 animate-fadeIn h-full">
-      <div className="text-center">
-        <p className="text-label-caps text-secondary mb-2 uppercase tracking-wide">New Discovery Revealed</p>
-      </div>
+      {!isAlreadyCollected && (
+        <div className="text-center">
+          <p className="text-label-caps text-secondary mb-2 uppercase tracking-wide">New Discovery Revealed</p>
+        </div>
+      )}
 
       <div className="w-full flex-1 flex flex-col justify-center items-center py-2 h-full min-h-0">
         <div className="relative w-full max-w-[300px] aspect-[7/10]">

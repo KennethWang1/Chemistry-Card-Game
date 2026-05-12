@@ -10,7 +10,7 @@ import CardReveal from './CardReveal';
 export default function LabMainContent() {
   const [currentCard, setCurrentCard] = useState<Scientist | null>(null);
   const [isOpening, setIsOpening] = useState(false);
-  const { addCard } = useCardCollection();
+  const { addCard, collectedCards } = useCardCollection();
 
   const handleOpenBox = () => {
     setIsOpening(true);
@@ -48,6 +48,7 @@ export default function LabMainContent() {
           <div className="w-full max-w-2xl h-full pb-2 min-h-0">
             <CardReveal
               scientist={currentCard}
+              collectedCards={collectedCards}
               onCollect={handleCollect}
               onDiscard={handleDiscard}
             />
